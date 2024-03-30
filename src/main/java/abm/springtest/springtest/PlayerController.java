@@ -29,7 +29,7 @@ public class PlayerController {
         return repo.getAll();
     }
 
-    @GetMapping("/player/{id}")
+    @GetMapping("/{id}")
     public Collection<Player> getPlayer(@PathVariable("id") int id) {
         return repo.get(id);
     }
@@ -40,4 +40,13 @@ public class PlayerController {
         return "Player Saved";
     }
     
+    @PostMapping("/update/{id}")
+    public String updatePlayer(@PathVariable("id") int id, @RequestBody Player p) {
+        return repo.update(id,p);
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deletePlayer(@PathVariable("id") int id) {
+        return repo.delete(id);
+    }
 }
